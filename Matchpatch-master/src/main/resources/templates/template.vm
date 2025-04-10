@@ -1,0 +1,12 @@
+CREATE AD $schema
+SRCQUAL $database.$directory START $startTable ADDTBLS N MODCRIT N ADCHGS N USENEW Y USEFM N PNSSTATE N SOLUTION 0
+#foreach ($table in $tables)
+TABLE ($table ACCESS SUID REF N DAA N UR N DBCIP N PREDOP A VARDELIM : COLFLAG N
+EXTRROWID N )
+#end
+#foreach ($rel in $relationships)
+REL (//$rel.id//
+STATUS $rel.status USAGE $rel.usage Q1 Y Q2 N LIMIT 0 TYPE Oracle
+PAR $rel.parent PAR_ACCESS D PAR_KEYLIMIT 1 CHI $rel.child CHI_ACCESS D CHI_KEYLIMIT 1 )
+#end
+;
